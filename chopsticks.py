@@ -187,19 +187,19 @@ class ChopsticksAI:
             return random.choice(state.get_moves())
         # otherwise, find the best
         actions = state.get_moves()
-        if epsilon:
-            print("choosing from", actions)
-            print("with rewards", [self.get_q_value(state.getKeyAble(), i) for i in actions])
+        # if epsilon:
+        #     print("choosing from", actions)
+        #     print("with rewards", [self.get_q_value(state.getKeyAble(), i) for i in actions])
         action = actions[random.randint(0, len(actions)-1)]
         best = self.get_q_value(state.getKeyAble(), action)
-        if epsilon:
-            print("choosing action")
+        # if epsilon:
+        #     print("choosing action")
         for act in actions:
-            if epsilon:
-                print("considering", act)
+            # if epsilon:
+            #     print("considering", act)
             if self.get_q_value(state.getKeyAble(), act) > best:
-                if epsilon:
-                    print("found new best", act)
+                # if epsilon:
+                #     print("found new best", act)
                 best = self.get_q_value(state.getKeyAble(), act)
                 action = act
         return action
@@ -489,6 +489,8 @@ def mapQ(depth=3):
 #         print("player", x.winner, "won!")
 #         break
 
+print("*"*30)
+print("Background information...")
 keys = 0
 states, wins = numStates([[1, 1], [1, 1]])
 print(len(states), "number of states")
@@ -498,8 +500,7 @@ for s in states:
 print("number of keys for the q_dict", keys)
 print("*"*30)
 
-trained = train(200)
-play(trained)
+
 # trained = train(1000)
 # trained = train(2000)
 # trained = train(4000)
@@ -514,3 +515,9 @@ play(trained)
 # s = Chopsticks()
 # for i in range(10):
 #     print(s.randState())
+
+if __name__ == "__main__":
+    # trained = train(200)
+    # play(trained)
+    print("Good, this should work. Go ahead and run play.py")
+
